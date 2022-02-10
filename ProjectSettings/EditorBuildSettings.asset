@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/HomeScreen.unity
     guid: 9ccdfcc7ea9619b4682d9e61c3df1930
+  - enabled: 1
+    path: Assets/Resources/Scenes/LevelSelector.unity
+    guid: e4c6a908dbcfce446b3efa85a1b02344
+  - enabled: 1
+    path: Assets/Resources/Scenes/Fase2.unity
+    guid: 6e083629b94c6c14abd009fcdaa6fd73
+  - enabled: 1
+    path: Assets/Resources/Scenes/Fase3.unity
+    guid: 3a8b05c57c1429d478f4f1275ee5d506
   m_configObjects: {}

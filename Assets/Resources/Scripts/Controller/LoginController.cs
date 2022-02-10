@@ -44,7 +44,7 @@ public class LoginController : MonoBehaviour{
         }
     }
   
-    void Awake()
+    public void Awake()
     {
         saveFile = Application.persistentDataPath + "/gamedata.json";
     }

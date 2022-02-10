@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -14,8 +15,10 @@ public class PlayerController : MonoBehaviour
         Time.timeScale=0f;
         _playerModel=GetComponent<PlayerModel>();
         _playerTransform=GetComponent<Transform>();
+        populaNomeEmail();
     }
 
+   
     // Update is called once per frame
     public void Move(float h)
     {
@@ -32,24 +35,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void SetNameAndEmail(){
-        const string MatchEmailPattern = 
-			@"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
-            + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
-				[0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
-            + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
-				[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-            + @"([a-zA-Z0-9]+[\w-]+\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,23})$";
-        _playerModel.PlayerName=GameObject.Find("NameSet").GetComponent<Text>().text;
-        _playerModel.PlayerEmail=GameObject.Find("EmailSet").GetComponent<Text>().text;
-        if(Regex.IsMatch(_playerModel.PlayerEmail, MatchEmailPattern)){
-            GameObject.Find("NameText").GetComponent<Text>().text=_playerModel.PlayerName;
-            GameObject.Find("EmailText").GetComponent<Text>().text=_playerModel.PlayerEmail;
-            GameObject.Find("InitialUI").GetComponent<CanvasGroup>().alpha=0f;
-            GameObject.Find("InitialUI").GetComponent<CanvasGroup>().blocksRaycasts=false;
-            Time.timeScale=1f;
-        }else{ 
-            GameObject.Find("EmailSet").GetComponent<Text>().color=Color.red;
-        }  
+    public void iniciaFase() {
+        GameObject.Find("InitialUI").GetComponent<CanvasGroup>().alpha = 0f;
+        GameObject.Find("InitialUI").GetComponent<CanvasGroup>().blocksRaycasts = false;
+        Time.timeScale = 1f;
     }
+    private void populaNomeEmail(){
+        LoginController _loginController = new LoginController();
+        _loginController.Awake();
+        LoginDTO login = _loginController.BuscaLogin();
+
+        _playerModel.PlayerName = login.Nome;
+        _playerModel.PlayerEmail = login.Email;
+        GameObject.Find("NameText").GetComponent<Text>().text = _playerModel.PlayerName;
+        GameObject.Find("EmailText").GetComponent<Text>().text = _playerModel.PlayerEmail;
+    }
+
 }

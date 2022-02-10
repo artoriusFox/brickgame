@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F2AE611D-A137-F2AE-71C0-08BFAF7460E8}</ProjectGuid>
+    <ProjectGuid>{D6E04A12-ED3E-5135-8638-A4E0EF27FC06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -54,18 +54,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Resources\Scripts\View\BrickView.cs" />
+    <Compile Include="Assets\Resources\Scripts\Util\JsonLoginUtil.cs" />
     <Compile Include="Assets\Resources\Scripts\Model\PlayerModel.cs" />
     <Compile Include="Assets\Resources\Scripts\View\PlayerView.cs" />
     <Compile Include="Assets\Resources\Scripts\Controller\PlayerController.cs" />
     <Compile Include="Assets\Resources\Scripts\Controller\UIController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Model\LoginDTO.cs" />
     <Compile Include="Assets\Resources\Scripts\Controller\BrickController.cs" />
     <Compile Include="Assets\Resources\Scripts\Controller\BallController.cs" />
     <Compile Include="Assets\Resources\Scripts\Model\BallModel.cs" />
     <Compile Include="Assets\Resources\Scripts\Model\BrickModel.cs" />
     <Compile Include="Assets\Resources\Scripts\View\BallView.cs" />
-    <Compile Include="Assets\Resources\Scripts\Model\LoginDTO.cs" />
     <Compile Include="Assets\Resources\Scripts\Controller\LoginController.cs" />
-    <Compile Include="Assets\Resources\Scripts\Util\JsonLoginUtil.cs" />
+    <Compile Include="Assets\Resources\Scripts\Controller\LevelSelectorController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
