@@ -10,10 +10,11 @@ public class BallModel : MonoBehaviour
     private float _speed;
     [SerializeField]
     private Vector2 _direction;
-    
+
     public float Power { get => _power; set => _power = value; }
 
     public float Speed { get => _speed; set => _speed = value; }
 
     public Vector2 Direction { get => _direction; set => _direction = value; }
+
 }

@@ -18,9 +18,12 @@ public class BrickController : MonoBehaviour
     {
         _brickModel.Health=_brickModel.Health-damage;
         if(_brickModel.Health==0){
+            Text textScore = GameObject.Find("ScoreNText").GetComponent<Text>();
             Text textBricks=GameObject.Find("NumberBricksText").GetComponent<Text>();
             textBricks.text=((int.Parse(textBricks.text))-1).ToString();
-            if(textBricks.text=="0")
+            textScore.text = ((int.Parse(textScore.text) + _brickModel.Points)).ToString();
+
+            if (textBricks.text=="0")
             {
                 GameObject.Find("WinUI").GetComponent<CanvasGroup>().alpha=1;
                 GameObject.Find("WinUI").GetComponent<AudioSource>().Play();

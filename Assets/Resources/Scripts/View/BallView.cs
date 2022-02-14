@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class BallView : MonoBehaviour
 {
@@ -88,8 +89,18 @@ public class BallView : MonoBehaviour
         SceneManager.LoadScene(_actualScene.name,LoadSceneMode.Single);
     }
 
-    public void LoadNextScene(string sceneName){
-        SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
+    public void LoadNextScene(int fase){
+        SceneManager.LoadScene("Fase"+fase.ToString(),LoadSceneMode.Single);
+        SalvaProgresso(fase);
     }
 
+    private void SalvaProgresso(int fase)
+    {
+        JsonPlayerDao playerDao = new JsonPlayerDao();
+        JsonLoginDao loginDao = new JsonLoginDao();
+        playerDao.iniciar();
+        loginDao.iniciar();
+
+        playerDao.SalvaPlayerFase(new PlayerSaveModel(loginDao.BuscaEmail(), fase));
+    }
 }

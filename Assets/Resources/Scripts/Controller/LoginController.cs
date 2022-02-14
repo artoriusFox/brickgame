@@ -8,13 +8,13 @@ using System;
 using System.IO;
 
 public class LoginController : MonoBehaviour{
-    string saveFile;
+    JsonLoginDao _jsonLoginDao = new JsonLoginDao();
     public void SalvaEmailLoginJson(){
         string nome = GameObject.Find("NameSet").GetComponent<Text>().text;
         string email = GameObject.Find("EmailSet").GetComponent<Text>().text;
         if (validaEmail(email)) {
             LoginDTO login = new LoginDTO(nome,email);
-            SalvaLogin(login);
+            _jsonLoginDao.SalvaLogin(login);
             ChamarSelecaoFases();
         }
     
@@ -46,21 +46,12 @@ public class LoginController : MonoBehaviour{
   
     public void Awake()
     {
-        saveFile = Application.persistentDataPath + "/gamedata.json";
-    }
-    public void SalvaLogin(LoginDTO login)
-    {
-        if (!File.Exists(saveFile))
-        {
-            File.Create(saveFile);
-        }
-        File.WriteAllText(saveFile, JsonUtility.ToJson(login));
+        _jsonLoginDao.iniciar();
     }
 
     public LoginDTO BuscaLogin()
     {
-        var jsonString = File.ReadAllText(saveFile);
-        return JsonUtility.FromJson<LoginDTO>(jsonString);
+        return _jsonLoginDao.BuscaLogin();
     }
 
 }

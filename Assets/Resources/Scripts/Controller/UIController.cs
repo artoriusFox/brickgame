@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
     }
 
     public void YesButtonPressed(){
-        SceneManager.LoadScene("InitialFase",LoadSceneMode.Single);
+        SceneManager.LoadScene("LevelSelector", LoadSceneMode.Single);
     }
 
     public void NoButtonPressed(){
