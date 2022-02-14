@@ -29,7 +29,6 @@ public class JsonPlayerDao : MonoBehaviour
                 if (psa.Fase >= playerSaveModel.Fase) {
                     return;
                 }
-                D
                 psa.Fase = playerSaveModel.Fase;
                 File.WriteAllText(saveFile, JsonConvert.SerializeObject(saves));
                 return;

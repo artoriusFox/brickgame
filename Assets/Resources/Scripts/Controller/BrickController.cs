@@ -22,23 +22,25 @@ public class BrickController : MonoBehaviour
             Text textBricks=GameObject.Find("NumberBricksText").GetComponent<Text>();
             textBricks.text=((int.Parse(textBricks.text))-1).ToString();
             textScore.text = ((int.Parse(textScore.text) + _brickModel.Points)).ToString();
-
+            Instantiate(_brickModel.EffectSprite, _brickTransform.position, Quaternion.identity);
+            GameObject.Find("Explosion(Clone)").GetComponent<AudioSource>().Play();
+            Destroy(gameObject);
+            GameObject[] _explosions=GameObject.FindGameObjectsWithTag("Explosion");
+            foreach (GameObject _explosionPrefab in _explosions)
+                {
+                    Destroy(_explosionPrefab,0.5f);
+                }
             if (textBricks.text=="0")
             {
                 GameObject.Find("WinUI").GetComponent<CanvasGroup>().alpha=1;
                 GameObject.Find("WinUI").GetComponent<AudioSource>().Play();
                 GameObject.Find("WinUI").GetComponent<CanvasGroup>().blocksRaycasts=true;
+                Text textScoreWin = GameObject.Find("ScoreWinText").GetComponent<Text>();
+                textScoreWin.text=textScore.text;
                 Time.timeScale=0f;
-            }else{
-                Instantiate(_brickModel.EffectSprite, _brickTransform.position, Quaternion.identity);
-                GameObject.Find("Explosion(Clone)").GetComponent<AudioSource>().Play();
-                Destroy(gameObject);
-                GameObject[] _explosions=GameObject.FindGameObjectsWithTag("Explosion");
-                foreach (GameObject _explosionPrefab in _explosions)
-                {
-                    Destroy(_explosionPrefab,0.5f);
-                }
             }
+                
+            
         }
     }
 }

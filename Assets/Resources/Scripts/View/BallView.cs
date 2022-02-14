@@ -54,6 +54,8 @@ public class BallView : MonoBehaviour
 
         if(collision.gameObject.tag=="Lose"){
             PlayerModel _playerModel=GameObject.Find("Player").GetComponent<PlayerModel>();
+            Text textScore = GameObject.Find("ScoreNText").GetComponent<Text>();
+            textScore.text = ((int.Parse(textScore.text) -20)).ToString();
             if(_playerModel.Life==0){
                 GameObject.Find("GameOverUI").GetComponent<AudioSource>().Play();
                 GameObject.Find("GameOverUI").GetComponent<CanvasGroup>().alpha=1;
